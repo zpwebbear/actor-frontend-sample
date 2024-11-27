@@ -1,6 +1,6 @@
 export class HtmlRenderer {
   createElement(htmlString) {
-    const itemElement = document.createElement('template');
+    const itemElement = document.createElement("template");
     itemElement.innerHTML = htmlString;
     return itemElement.content.cloneNode(true);
   }

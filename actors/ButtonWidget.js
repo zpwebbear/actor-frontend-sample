@@ -1,18 +1,18 @@
-import { HtmlRenderer } from './HtmlRenderer.js';
+import { HtmlRenderer } from "./HtmlRenderer.js";
 
 export class ButtonWidget extends HtmlRenderer {
-  actorId = 'load-trigger';
-  eventName = 'click';
+  actorId = "load-trigger";
+  eventName = "click";
   constructor(engine) {
     super(engine);
     this.engine = engine;
     this.boundListener = this.listener.bind(this);
     this.target.addEventListener(this.eventName, this.boundListener);
-    console.log(`Start actor: %s`, this.constructor.name)
+    console.log(`Start actor: %s`, this.constructor.name);
   }
 
   async listener(e) {
-    this.engine.send('TodoListLoader', { action: 'load' });
+    this.engine.send("TodoListLoader", { action: "load" });
   }
 
   async startLoading() {
@@ -28,7 +28,7 @@ export class ButtonWidget extends HtmlRenderer {
   }
 
   async message({ action, payload }) {
-    if (!['startLoading', 'stopLoading'].includes(action)) return;
+    if (!["startLoading", "stopLoading"].includes(action)) return;
     this[action](payload);
   }
 

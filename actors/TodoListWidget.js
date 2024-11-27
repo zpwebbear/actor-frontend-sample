@@ -11,13 +11,19 @@ export class TodoListWidget extends HtmlRenderer {
   async renderList(list) {
     return this.render(`
         <div data-actor-id="${this.actorId}" class="list">
-          ${list.map(
-            (item) =>
-              `<div class="todo-item">
-             <label class="item-title" for="${item.id}-input">${item.title}</label>
-             <input type="checkbox" id="${item.id}-input" ${item.completed ? "checked" : ""} />
+          ${list
+            .map(
+              (item) =>
+            `<div class="todo-item">
+              <label class="item-title" for="${item.id}-input">${item.title}</label>
+              <input 
+               type="checkbox" 
+               id="${item.id}-input" 
+               ${item.completed ? "checked" : ""} 
+              />
             </div>`
-          ).join('')}</div>
+            )
+            .join("")}</div>
       `);
   }
 
